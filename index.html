@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Aplicação de Juros</title>
+</head>
+<body>
+
+  <h2>Aplicação de Juros</h2>
+
+  <label>
+    Valor da dívida (R$):
+    <input type="number" id="valorDivida" step="0.01">
+  </label>
+  <br><br>
+
+  <label>
+    Dias em atraso:
+    <input type="number" id="diasVencimento">
+  </label>
+  <br><br>
+
+  <button onclick="calcularJuros()">Calcular Juros</button>
+
+  <pre id="saida"></pre>
+
+  <script src="script.js"></script>
+</body>
+</html>
