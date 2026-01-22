@@ -3,26 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <title>Aplicação de Juros</title>
+  <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
 
-  <h2>Aplicação de Juros</h2>
+  <div class="container">
+    <h2>💸 Aplicação de Juros</h2>
 
-  <label>
-    Valor da dívida (R$):
-    <input type="number" id="valorDivida" step="0.01">
-  </label>
-  <br><br>
+    <div class="field">
+      <label>Valor da dívida (R$)</label>
+      <input type="number" id="valorDivida" step="0.01">
+    </div>
 
-  <label>
-    Dias em atraso:
-    <input type="number" id="diasVencimento">
-  </label>
-  <br><br>
+    <div class="field">
+      <label>Dias em atraso</label>
+      <input type="number" id="diasVencimento">
+    </div>
 
-  <button onclick="calcularJuros()">Calcular Juros</button>
+    <button onclick="calcularJuros()">Calcular Juros</button>
 
-  <pre id="saida"></pre>
+    <pre id="saida" class="output"></pre>
+  </div>
 
   <script src="script.js"></script>
 </body>

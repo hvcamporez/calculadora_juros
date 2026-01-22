@@ -3,33 +3,38 @@ function calcularJuros() {
   const diasVencimento = Number(document.getElementById("diasVencimento").value);
 
   let saida = "";
-  let valor_juros = 0;
+  let valorJurosPercentual = 0;
 
-  if (valorDivida > 0) {
-
-    if (diasVencimento > 0) {
-
-      if (diasVencimento > 15) {
-        valor_juros = 10;
-      } else {
-        valor_juros = 5;
-      }
-
-      const total_juros = (valorDivida / 100) * valor_juros;
-      const valor_total = valorDivida + total_juros;
-
-      saida += `Valor original da dívida: R$ ${valorDivida.toFixed(2)}\n`;
-      saida += `Dias atrasados: ${diasVencimento}\n`;
-      saida += `Taxa de Juros: ${valor_juros}%\n`;
-      saida += `Valor total com juros: R$ ${valor_total.toFixed(2)}\n`;
-
-    } else {
-      saida = "Você está em dia!";
-    }
-
-  } else {
-    saida = "O valor da dívida deve ser maior que zero!";
+  // Validação do valor da dívida
+  if (valorDivida <= 0) {
+    saida = "❌ O valor da dívida deve ser maior que zero!";
+    document.getElementById("saida").textContent = saida;
+    return;
   }
+
+  // Se não há atraso
+  if (diasVencimento <= 0) {
+    saida = "✅ Você está em dia! Não há juros aplicados.";
+    document.getElementById("saida").textContent = saida;
+    return;
+  }
+
+  // Define taxa de juros
+  if (diasVencimento > 15) {
+    valorJurosPercentual = 10;
+  } else {
+    valorJurosPercentual = 5;
+  }
+
+  const totalJuros = (valorDivida * valorJurosPercentual) / 100;
+  const valorTotal = valorDivida + totalJuros;
+
+  // Exibe SOMENTE o resultado final (sem repetição desnecessária)
+  saida += `Valor original da dívida: R$ ${valorDivida.toFixed(2)}\n`;
+  saida += `Dias em atraso: ${diasVencimento}\n`;
+  saida += `Taxa de juros aplicada: ${valorJurosPercentual}%\n`;
+  saida += `Valor dos juros: R$ ${totalJuros.toFixed(2)}\n`;
+  saida += `\n💰 Valor total com juros: R$ ${valorTotal.toFixed(2)}\n`;
 
   document.getElementById("saida").textContent = saida;
 }
